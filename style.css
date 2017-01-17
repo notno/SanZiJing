@@ -1,0 +1,38 @@
+
+body {
+	font-family: helvetica, sans-serif;
+}
+
+div.line {
+	margin-bottom: 30px;
+	border-bottom: 1px solid #efefef;
+}
+
+div.line-number {
+	float: left;
+	font-size: 110px;
+	color: #efefef;
+	padding-right: 100px;
+}
+
+table.zhongwen {
+	margin-bottom: 20px;
+}
+table.zhongwen tr td {
+	padding: 0 20px;
+	text-align: center;
+}
+table.zhongwen tr td:first-child, td.san {
+	padding-left: 0px !important;
+}
+
+tr.pinyin td {
+}
+
+tr.jianti-hanyu {
+	font-size: 60px;
+}
+
+p.translation {
+	margin-bottom: 20px;
+}
