@@ -1,51 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>San Zi Jing</title>
-	<link rel="stylesheet" href="style.css">
+	<title>San Zi Jing 《 三 字 经 》</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
-<h1>《 三  字 经 》</h1>
-<h2>The Three Character Classic, Trimetric Classic or "San Zi Jing" is one of the Chinese classic texts.</h2>
-<h3>It was probably written in the 13th century and attributed to Wang Yinglin (王應麟, 1223--1296) during the Song Dynasty. It is also attributed to Ou Shizi (歐適子, 1234--1324).</h3>
-<h4>Translated by Herbert A. Giles (Shanghai, 1910)</h4>
-<div id="root"></div>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills float-right">
+					<li class="nav-item">
+						<a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Contact</a>
+					</li>
+				</ul>
+			</nav>
+			<h3 class="text-muted">《 三  字 经 》</h3>
+		</div>
+		<div class="jumbotron">
+			<h1 class="display-3">三 字 经</h1>
+			<p class="lead">Below is the Three Character Classic, or "San Zi Jing".</p>
+			<p class="lead">Foreign students of China and/or Chinese would do well to study it. For one thing, at least until relatively recently most Chinese people had to memorize it as children. They still have to in some places like Taiwan.</p>
+			<p class="lead">Wang Yinglin (王應麟, 1223&ndash;1296) probably wrote it.</p>
+			<p class="lead">Herbert A. Giles did the English translation below in 1910.</p>
+			<p><a class="btn btn-lg btn-success" href="#" role="button">三 字 经</a></p>
+		</div>
+		<div id="root"></div>
+	</div>
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
-<script src="https://unpkg.com/react@latest/dist/react.js"></script>
-<script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
-<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
-<script type="text/babel">
 
-var LineComponent = React.createClass({
-	render: function() {
-		return (
-			<div className="line">
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" charset="utf-8"></script>
+	<script src="js/bootstrap.min.js" charset="utf-8"></script>
+	<script src="https://unpkg.com/react@latest/dist/react.js"></script>
+	<script src="https://unpkg.com/react-dom@latest/dist/react-dom.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+	<script type="text/babel">
+
+		var LineComponent = React.createClass({ render: function() { return (
+		<div className="line">
 			<div className='line-number'>{this.props.lineNumber}</div>
-			<table className="zhongwen">
-			<tr className="pinyin"><td>{this.props.pinyin[0]}</td><td>{this.props.pinyin[1]}</td><td className="san">{this.props.pinyin[2]},</td><td>{this.props.pinyin[3]}</td><td>{this.props.pinyin[4]}</td><td>{this.props.pinyin[5]}。</td></tr>
-			<tr className="jianti-hanyu"><td>{this.props.char[0]}</td><td>{this.props.char[1]}</td><td>{this.props.char[2]}，</td><td>{this.props.char[3]}</td><td>{this.props.char[4]}</td><td>{this.props.char[5]}。</td></tr>
-			</table>
-			<p className="translation">{this.props.translation}</p>
+			<div className="row marketing pinyin">
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.pinyin[0]}</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.pinyin[1]}</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.pinyin[2]},</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.pinyin[3]}</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.pinyin[4]}</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.pinyin[5]}。</span></div>
 			</div>
-		);
-	}
-});
+			<div className="row marketing hanzi">
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.char[0]}</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.char[1]}</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.char[2]}，</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.char[3]}</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.char[4]}</span></div>
+				<div className="col-4 col-sm-2"><span className="zi">{this.props.char[5]}。</span></div>
+			</div>
+			<div className="row marketing translation">
+				<div className="col">
+					<span className="text">{this.props.translation}</span>
+				</div>
+			</div>
+		</div>
+		); } }); $.getJSON("/sanzijing.json", (data) => { const lines = data.map((line, i) =>
+		<LineComponent lineNumber={i} pinyin={line.pinyin} char={line.characters} translation={line.translation} /> ); ReactDOM.render(
+		<section id="sanzijing">{lines}</section>, document.getElementById('root') ); });
 
-$.getJSON("/sanzijing.json", (data) => {
- 	const lines = data.map((line, i) =>
-		<LineComponent lineNumber={i} pinyin={line.pinyin} char={line.characters} translation={line.translation} />
-	);
-	ReactDOM.render(
-		<section id="sanzijing">{lines}</section>,
-		document.getElementById('root')
-	);
-});
 
-
-</script>
+	</script>
 </body>
+
 </html>

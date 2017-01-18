@@ -1,0 +1,19 @@
+{
+  "name": "sanzijing",
+  "version": "1.0.0",
+  "description": "A nicely formatted web page of the 三字经 (\"San Zi Jing\") -  The Three Character Classic",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/notno/SanZiJing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/notno/SanZiJing/issues"
+  },
+  "homepage": "https://github.com/notno/SanZiJing#readme"
+}
